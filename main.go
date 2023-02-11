@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/csv"
+	"fmt"
 	"log"
 	"sort"
 	"strconv"
@@ -186,6 +187,10 @@ func main() {
 	var res [][]string
 	{
 		res = append(res, []string{"date", "weekly", "monthly"})
+	}
+
+	for _, x := range lis {
+		res = append(res, []string{x.Tim.Format(time.RFC3339), fmt.Sprintf("%.6f", x.Wee), fmt.Sprintf("%.6f", x.Mon)})
 	}
 
 	var wri *bytes.Buffer
